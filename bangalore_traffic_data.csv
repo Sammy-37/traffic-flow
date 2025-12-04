@@ -1,0 +1,51 @@
+Name,Distance_km,Time_min,Signals,Potholes,Zone,Mode,Construction_Impact,Road_Quality,Fuel_Loss_Liters
+Manjunath Gowda,12.65,78.28,18,7,Whitefield,Two-wheeler,No,6,0.39
+Aditi Rao,10.11,54.12,16,6,Hebbal,Car,No,7,0.27
+Karthik Reddy,13.25,82.28,18,6,HSR Layout,Two-wheeler,Yes,7,0.41
+Priya Menon,16.75,101.93,14,7,HSR Layout,Two-wheeler,Yes,6,0.51
+Syed Imran,9.72,63.91,19,3,KR Puram,Car,Yes,9,0.32
+Rahul Sharma,9.72,63.11,12,6,Hebbal,Car,Yes,7,0.32
+Divya Suresh,16.98,91.18,14,7,HSR Layout,Car,Yes,6,0.46
+Chethan Kumar,13.73,73.22,18,3,Hebbal,Two-wheeler,Yes,9,0.37
+Sowmya Shetty,8.78,63.16,18,10,Marathahalli,Car,Yes,4,0.32
+Rohan Kulkarni,12.83,77.17,10,7,KR Puram,Car,Yes,6,0.39
+Ananya Bhat,8.81,50.91,16,1,Hebbal,Walk,Yes,10,0.26
+Deepak Raj,8.8,78.97,16,7,Whitefield,Two-wheeler,Yes,6,0.4
+Meghana Patil,11.63,67.07,14,2,Whitefield,Two-wheeler,No,9,0.34
+Arjun Nair,3.01,24.73,10,6,Koramangala,Two-wheeler,No,7,0.12
+Kavya Iyer,3.76,34.02,18,7,KR Puram,Two-wheeler,No,6,0.17
+Mohammed Arif,8.41,48.3,12,2,KR Puram,Two-wheeler,Yes,9,0.24
+Sneha Gupta,6.61,37.17,10,7,Koramangala,Two-wheeler,No,6,0.19
+Varun Hegde,11.92,72.96,11,6,Hebbal,Two-wheeler,Yes,7,0.37
+Lakshmi Narayan,7.03,39.16,14,7,KR Puram,Car,Yes,6,0.2
+Amit Verma,5.01,36.13,16,10,Whitefield,Bus,Yes,4,0.18
+Vidya Deshpande,16.52,96.02,21,5,Whitefield,Two-wheeler,Yes,7,0.48
+Sanjay Singh,9.76,53.56,12,3,HSR Layout,Two-wheeler,Yes,9,0.27
+Nandini Murthy,10.93,72.11,11,2,Marathahalli,Two-wheeler,No,9,0.36
+Harish Babu,4.96,15.0,11,1,KR Puram,Walk,Yes,10,0.08
+Ramya Krishnan,8.48,48.92,8,4,Hebbal,Car,Yes,8,0.25
+Vinay George,11.1,60.52,22,6,Koramangala,Bus,Yes,7,0.3
+Shilpa Ravi,6.06,32.48,13,5,Koramangala,Car,Yes,7,0.16
+Pradeep Kumar,12.16,86.91,24,8,Hebbal,Two-wheeler,Yes,6,0.44
+Aishwarya R.,8.26,48.14,13,5,Bellandur,Car,Yes,7,0.24
+Nikhil Chhabra,9.49,51.71,11,9,Silk Board,Two-wheeler,Yes,5,0.26
+Swathi Reddy,8.25,42.67,14,4,Marathahalli,Two-wheeler,Yes,8,0.21
+Manoj Tiwari,18.07,116.24,8,15,Koramangala,Bus,Yes,1,0.58
+Neha Agarwal,10.61,63.2,20,7,KR Puram,Car,No,6,0.32
+Raghu N.,6.43,32.02,8,2,Marathahalli,Two-wheeler,Yes,9,0.16
+Keerthi Suresh,13.95,78.69,17,2,KR Puram,Bus,Yes,9,0.39
+Praveen Kumar,5.78,27.94,10,5,Bellandur,Bus,No,7,0.14
+Chaithra Gowda,11.5,77.31,12,4,Whitefield,Bus,No,8,0.39
+Darshan L.,3.0,23.44,13,6,Marathahalli,Car,No,7,0.12
+Mamatha J.,5.35,17.02,10,5,HSR Layout,Two-wheeler,Yes,7,0.09
+Yashwanth Yadav,11.45,68.64,16,5,Koramangala,Two-wheeler,Yes,7,0.34
+Geetha G.,13.61,72.43,15,3,Marathahalli,Car,No,9,0.36
+Suresh Babu,11.35,67.23,16,1,Marathahalli,Two-wheeler,Yes,10,0.34
+Deepa Kodathi,10.2,54.32,16,4,Marathahalli,Two-wheeler,No,8,0.27
+Vijay Kumar,9.46,61.18,21,7,Silk Board,Bus,Yes,6,0.31
+Jyothi Lakshmi,4.75,28.09,10,4,Marathahalli,Two-wheeler,Yes,8,0.14
+Ramesh B.,7.78,43.62,10,1,KR Puram,Two-wheeler,No,10,0.22
+Varsha Jain,8.82,45.92,17,5,Whitefield,Bus,Yes,7,0.23
+Sathvik Kashyap,14.89,86.55,15,7,Bellandur,Bus,Yes,6,0.43
+Sampath Philip,12.03,67.83,20,3,Hebbal,Two-wheeler,No,9,0.34
+Sai Sneha,3.61,15.0,10,4,Marathahalli,Bus,No,8,0.08
