@@ -22,7 +22,7 @@ Amit Verma,5.01,36.13,16,10,Whitefield,Bus,Yes,4,0.18
 Vidya Deshpande,16.52,96.02,21,5,Whitefield,Two-wheeler,Yes,7,0.48
 Sanjay Singh,9.76,53.56,12,3,HSR Layout,Two-wheeler,Yes,9,0.27
 Nandini Murthy,10.93,72.11,11,2,Marathahalli,Two-wheeler,No,9,0.36
-Harish Babu,4.96,15.0,11,1,KR Puram,Walk,Yes,10,0.08
+Harish Babu,4.96,15,11,1,KR Puram,Walk,Yes,10,0.08
 Ramya Krishnan,8.48,48.92,8,4,Hebbal,Car,Yes,8,0.25
 Vinay George,11.1,60.52,22,6,Koramangala,Bus,Yes,7,0.3
 Shilpa Ravi,6.06,32.48,13,5,Koramangala,Car,Yes,7,0.16
@@ -34,18 +34,18 @@ Manoj Tiwari,18.07,116.24,8,15,Koramangala,Bus,Yes,1,0.58
 Neha Agarwal,10.61,63.2,20,7,KR Puram,Car,No,6,0.32
 Raghu N.,6.43,32.02,8,2,Marathahalli,Two-wheeler,Yes,9,0.16
 Keerthi Suresh,13.95,78.69,17,2,KR Puram,Bus,Yes,9,0.39
-Praveen Kumar,5.78,27.94,10,5,Bellandur,Bus,No,7,0.14
+Jyothi Lakshmi,5.78,27.94,10,5,Bellandur,Bus,No,7,0.14
 Chaithra Gowda,11.5,77.31,12,4,Whitefield,Bus,No,8,0.39
-Darshan L.,3.0,23.44,13,6,Marathahalli,Car,No,7,0.12
+Darshan L.,3,23.44,13,6,Marathahalli,Car,No,7,0.12
 Mamatha J.,5.35,17.02,10,5,HSR Layout,Two-wheeler,Yes,7,0.09
 Yashwanth Yadav,11.45,68.64,16,5,Koramangala,Two-wheeler,Yes,7,0.34
 Geetha G.,13.61,72.43,15,3,Marathahalli,Car,No,9,0.36
 Suresh Babu,11.35,67.23,16,1,Marathahalli,Two-wheeler,Yes,10,0.34
 Deepa Kodathi,10.2,54.32,16,4,Marathahalli,Two-wheeler,No,8,0.27
 Vijay Kumar,9.46,61.18,21,7,Silk Board,Bus,Yes,6,0.31
-Jyothi Lakshmi,4.75,28.09,10,4,Marathahalli,Two-wheeler,Yes,8,0.14
-Ramesh B.,7.78,43.62,10,1,KR Puram,Two-wheeler,No,10,0.22
-Varsha Jain,8.82,45.92,17,5,Whitefield,Bus,Yes,7,0.23
-Sathvik Kashyap,14.89,86.55,15,7,Bellandur,Bus,Yes,6,0.43
-Sampath Philip,12.03,67.83,20,3,Hebbal,Two-wheeler,No,9,0.34
-Sai Sneha,3.61,15.0,10,4,Marathahalli,Bus,No,8,0.08
+Praveen Kumar,4.75,28.09,10,4,Marathahalli,Two-wheeler,Yes,8,0.14
+Shaik Ismail Ahmed,7.78,43.62,10,1,KR Puram,Two-wheeler,No,10,0.22
+Rahul Biswas,8.82,45.92,17,5,Whitefield,Bus,Yes,7,0.23
+Shreyas S,14.89,86.55,15,7,Bellandur,Bus,Yes,6,0.43
+Siddhant Rao,12.03,67.83,20,3,Hebbal,Two-wheeler,No,9,0.34
+Rokesh Venkatesh,3.61,15,10,4,Marathahalli,Bus,No,8,0.08
