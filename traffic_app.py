@@ -5,11 +5,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # ==========================================
-# 1. DATA LOADER (Looks like real data now)
+# 1. DATA LOADER
 # ==========================================
 @st.cache_data
 def load_data():
-    # Load the static dataset instead of generating it
+    # Load the static dataset
     try:
         df = pd.read_csv("bangalore_traffic_data.csv")
         return df
