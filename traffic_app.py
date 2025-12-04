@@ -65,48 +65,69 @@ st.title("🚦 Bangalore Traffic Congestion Predictor")
 st.sidebar.header("📝 Trip Details")
 
 distance = st.sidebar.number_input("Commute Distance (km)", min_value=1.0, value=10.0, step=0.5)
-signals = st.sidebar.slider("Traffic Signals", 0, 50, 14)
 
 st.sidebar.markdown("---")
-st.sidebar.subheader("Road Condition")
+st.sidebar.subheader("Route Familiarity")
 
 # Check if user knows the route
 knows_route = st.sidebar.checkbox("I have traveled this road before", value=True)
 
 if knows_route:
-    # MANUAL INPUT
-    quality_rating = st.sidebar.slider("Rate Road Quality (1-10)", 1, 10, 5,
+    # === MANUAL INPUT MODE ===
+    st.sidebar.markdown("### Manual Input")
+
+    # 1. Signals Input
+    signals = st.sidebar.slider("Number of Signals", 0, 50, 14,
+                                help="Count of traffic signals on your route.")
+
+    # 2. Road Quality Input
+    quality_rating = st.sidebar.slider("Road Quality (1-10)", 1, 10, 5,
                                        help="1 = Many Potholes, 10 = Smooth")
+
+    # Convert Quality to Potholes
     estimated_potholes = int((10 - quality_rating) * 2.2)
-    st.sidebar.caption(f"Manual input: Approx {estimated_potholes} potholes.")
+    st.sidebar.caption(f"Manual Estimate: ~{estimated_potholes} potholes.")
 
 else:
-    # AUTOMATIC LOOKUP
-    # Get unique zones from data + an 'Unknown' option
+    # === AUTO / ZONE LOOKUP MODE ===
+    st.sidebar.markdown("### Zone Lookup")
+
+    # Select Zone
     available_zones = sorted(df['Zone'].unique().tolist())
     available_zones.append("Other / Unknown Route")
-
     selected_zone = st.sidebar.selectbox("Select Zone / Area", available_zones)
 
     if selected_zone == "Other / Unknown Route":
-        # NO DATA CASE
-        st.sidebar.error("⚠️ We don't have data for this route yet.")
-        st.sidebar.info("Assuming 'Average' quality (5/10) for prediction.")
-        quality_rating = 5
-        estimated_potholes = int((10 - quality_rating) * 2.2)
+        # Fallback if no data
+        st.sidebar.warning("⚠️ No data. Using city-wide averages.")
+        signals = int(df['Signals'].mean())
+        avg_quality = 5
+        estimated_potholes = int(df['Potholes'].mean())
+
+        st.sidebar.metric("Avg Traffic Signals", f"{signals}")
+        st.sidebar.metric("Avg Road Quality", "5/10")
 
     else:
-        # PRE-EXISTING DATA CASE
-        # Calculate average quality for that specific zone
+        # Calculate Averages for the specific zone
         zone_data = df[df['Zone'] == selected_zone]
+
+        # 1. Signals Average
+        avg_signals = int(zone_data['Signals'].mean())
+        signals = avg_signals
+
+        # 2. Road Quality Average
         avg_quality = int(zone_data['Road_Quality'].mean())
-
-        st.sidebar.success(f"✅ Found data for {selected_zone}!")
-        st.sidebar.metric("Historical Road Quality", f"{avg_quality}/10")
-
         quality_rating = avg_quality
         estimated_potholes = int((10 - quality_rating) * 2.2)
-        st.sidebar.caption(f"Using historical avg: {estimated_potholes} potholes.")
+
+        st.sidebar.success(f"✅ Loaded data for {selected_zone}")
+
+        # Display the metrics so user knows what's being used
+        col_s, col_q = st.sidebar.columns(2)
+        with col_s:
+            st.metric("Avg Signals", f"{signals}")
+        with col_q:
+            st.metric("Avg Quality", f"{quality_rating}/10")
 
 # ==========================================
 # 3. CALCULATIONS
@@ -135,14 +156,20 @@ st.markdown("---")
 
 # DASHBOARD
 st.header("📊 Data Visualization")
-tab1, tab2 = st.tabs(["Zone Quality Analysis", "Raw Data"])
+tab1, tab2 = st.tabs(["Zone Analysis", "Raw Data"])
 
 with tab1:
-    # Show which zones have the worst roads
-    st.subheader("Average Road Quality by Zone")
-    quality_chart = df.groupby("Zone")["Road_Quality"].mean().sort_values()
-    st.bar_chart(quality_chart)
-    st.caption("Lower score = More potholes.")
+    col_a, col_b = st.columns(2)
+
+    with col_a:
+        st.subheader("Avg Signals by Zone")
+        sig_chart = df.groupby("Zone")["Signals"].mean().sort_values()
+        st.bar_chart(sig_chart)
+
+    with col_b:
+        st.subheader("Avg Road Quality by Zone")
+        qual_chart = df.groupby("Zone")["Road_Quality"].mean().sort_values()
+        st.bar_chart(qual_chart)
 
 with tab2:
     st.dataframe(df)
