@@ -64,70 +64,58 @@ st.title("🚦 Bangalore Traffic Congestion Predictor")
 # --- SIDEBAR INPUTS ---
 st.sidebar.header("📝 Trip Details")
 
+# 1. Distance (Always Manual)
 distance = st.sidebar.number_input("Commute Distance (km)", min_value=1.0, value=10.0, step=0.5)
 
+# 2. Zone Selection (Required for Average lookups)
 st.sidebar.markdown("---")
-st.sidebar.subheader("Route Familiarity")
+st.sidebar.subheader("📍 Location")
+available_zones = sorted(df['Zone'].unique().tolist())
+available_zones.append("Other / Unknown Route")
+selected_zone = st.sidebar.selectbox("Select Zone / Area", available_zones)
 
-# Check if user knows the route
-knows_route = st.sidebar.checkbox("I have traveled this road before", value=True)
 
-if knows_route:
-    # === MANUAL INPUT MODE ===
-    st.sidebar.markdown("### Manual Input")
+# Helper function to get averages
+def get_zone_averages(zone_name):
+    if zone_name == "Other / Unknown Route":
+        return int(df['Signals'].mean()), int(df['Road_Quality'].mean())
+    else:
+        zone_df = df[df['Zone'] == zone_name]
+        return int(zone_df['Signals'].mean()), int(zone_df['Road_Quality'].mean())
 
-    # 1. Signals Input
-    signals = st.sidebar.slider("Number of Signals", 0, 50, 14,
-                                help="Count of traffic signals on your route.")
 
-    # 2. Road Quality Input
-    quality_rating = st.sidebar.slider("Road Quality (1-10)", 1, 10, 5,
+avg_sig_val, avg_qual_val = get_zone_averages(selected_zone)
+
+# 3. Traffic Signals Input (Independent Control)
+st.sidebar.markdown("---")
+st.sidebar.subheader("🚦 Traffic Signals")
+use_avg_signals = st.sidebar.checkbox(f"Use average signals for {selected_zone.split('/')[0]}", value=False)
+
+if use_avg_signals:
+    # AUTO MODE
+    signals = avg_sig_val
+    st.sidebar.info(f"Using average: **{signals} signals**")
+else:
+    # MANUAL MODE
+    signals = st.sidebar.slider("Number of Signals", 0, 50, 14)
+
+# 4. Road Condition Input (Independent Control)
+st.sidebar.markdown("---")
+st.sidebar.subheader("🚧 Road Condition")
+knows_road_quality = st.sidebar.checkbox("I have traveled this road before", value=True)
+
+if knows_road_quality:
+    # MANUAL MODE
+    quality_rating = st.sidebar.slider("Rate Road Quality (1-10)", 1, 10, 5,
                                        help="1 = Many Potholes, 10 = Smooth")
-
-    # Convert Quality to Potholes
     estimated_potholes = int((10 - quality_rating) * 2.2)
     st.sidebar.caption(f"Manual Estimate: ~{estimated_potholes} potholes.")
-
 else:
-    # === AUTO / ZONE LOOKUP MODE ===
-    st.sidebar.markdown("### Zone Lookup")
-
-    # Select Zone
-    available_zones = sorted(df['Zone'].unique().tolist())
-    available_zones.append("Other / Unknown Route")
-    selected_zone = st.sidebar.selectbox("Select Zone / Area", available_zones)
-
-    if selected_zone == "Other / Unknown Route":
-        # Fallback if no data
-        st.sidebar.warning("⚠️ No data. Using city-wide averages.")
-        signals = int(df['Signals'].mean())
-        avg_quality = 5
-        estimated_potholes = int(df['Potholes'].mean())
-
-        st.sidebar.metric("Avg Traffic Signals", f"{signals}")
-        st.sidebar.metric("Avg Road Quality", "5/10")
-
-    else:
-        # Calculate Averages for the specific zone
-        zone_data = df[df['Zone'] == selected_zone]
-
-        # 1. Signals Average
-        avg_signals = int(zone_data['Signals'].mean())
-        signals = avg_signals
-
-        # 2. Road Quality Average
-        avg_quality = int(zone_data['Road_Quality'].mean())
-        quality_rating = avg_quality
-        estimated_potholes = int((10 - quality_rating) * 2.2)
-
-        st.sidebar.success(f"✅ Loaded data for {selected_zone}")
-
-        # Display the metrics so user knows what's being used
-        col_s, col_q = st.sidebar.columns(2)
-        with col_s:
-            st.metric("Avg Signals", f"{signals}")
-        with col_q:
-            st.metric("Avg Quality", f"{quality_rating}/10")
+    # AUTO MODE
+    quality_rating = avg_qual_val
+    estimated_potholes = int((10 - quality_rating) * 2.2)
+    st.sidebar.info(f"Using average quality: **{quality_rating}/10**")
+    st.sidebar.caption(f"Auto Estimate: ~{estimated_potholes} potholes.")
 
 # ==========================================
 # 3. CALCULATIONS
